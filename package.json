@@ -2,10 +2,10 @@
   "name": "Knife",
   "description": "An example for VS Code",
   "version": "0.0.1",
-  "publisher": "vscode-samples",
+  "publisher": "grandiloquent",
   "repository": "https://github.com/grandiloquent/Knife-vscode",
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.70.0"
   },
   "activationEvents": [
     "onCommand:knife.translateName"
@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "Command": "knife.translateName",
-        "Title": "translateName"
+        "command": "knife.translateName",
+        "title": "F3 翻译变量名称"
       }
     ],
     "menus": {
@@ -27,15 +27,21 @@
       ],
       "submenus": [
         {
-          "Command": "knife.translateName",
-          "When": "editorTextFocus",
-          "Group": "uncommon"
+          "command": "knife.translateName",
+          "when": "editorTextFocus",
+          "group": "uncommon"
         }
       ]
-    }
+    },
+    "submenus": [
+      {
+        "label": "功能",
+        "id": "submenus"
+      }
+    ]
   },
   "scripts": {},
   "devDependencies": {
-    "@types/vscode": "^1.73.0"
+    "@types/vscode": "^1.70.0"
   }
 }
