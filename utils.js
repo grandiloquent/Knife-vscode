@@ -1,7 +1,7 @@
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36';
 const {exec} = require("child_process");
 // https://github.com/brianc/node-postgres
-const {Client} = require('pg');
+//const {Client} = require('pg');
 const https = require('https');
 const vscode = require('vscode');
 
