@@ -1,13 +1,13 @@
 const vscode = require('vscode');
 
 function activate(context) {
-
-	context.subscriptions.push(disposable);
+    require('./translateName')(context);
 }
 
-function deactivate() {}
+function deactivate() {
+}
 
 module.exports = {
-	activate,
-	deactivate
+    activate,
+    deactivate
 }
