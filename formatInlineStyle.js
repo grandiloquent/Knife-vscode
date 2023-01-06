@@ -1,6 +1,9 @@
 const vscode = require('vscode');
+// https://nodejs.org/api/fs.html
 const fs = require('fs');
+// https://nodejs.org/api/path.html
 const path = require('path');
+const {substringBeforeLast} = require("./utils");
 
 const COMMAND = 'knife.formatInlineStyle';
 
@@ -41,14 +44,44 @@ ${obj.body}
     }
     let invalidRange = new vscode.Range(0, 0, editor.document.lineCount, 0);
     let validFullRange = editor.document.validateRange(invalidRange);
-    editor.edit(
-        edit =>
-            edit.replace(validFullRange, text));
+    editor.edit(edit => edit.replace(validFullRange, text));
+}
+
+function formatHtml() {
+    const fileName = vscode.window.activeTextEditor.document.fileName;
+    const dir = path.join(path.dirname(fileName), "css");
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir)
+    }
+    const styleFileName = path.join(dir, substringBeforeLast(path.basename(fileName), ".") + ".css");
+    if (!fs.existsSync(styleFileName)) {
+        fs.writeFileSync(styleFileName, "");
+    }
+    const editor = vscode.window.activeTextEditor;
+
+    let text = editor.document.getText();
+    const obj = extractStyle();
+    if (obj.name.startsWith(".")) {
+        text = text.replace(obj.match[0], `class="${obj.name.slice(1)}"`)
+            .replaceAll(obj.match[2], `class="${obj.name.slice(1)}"`)
+    } else {
+        text = text.replaceAll(obj.match[2], '')
+    }
+    let invalidRange = new vscode.Range(0, 0, editor.document.lineCount, 0);
+    let validFullRange = editor.document.validateRange(invalidRange);
+    editor.edit(edit => edit.replace(validFullRange, text));
+    let strings = fs.readFileSync(styleFileName);
+    fs.writeFileSync(styleFileName, `${strings}
+    ${obj.name}{
+    ${obj.body}
+    }`)
 }
 
 module.exports = (context) => {
     context.subscriptions.push(vscode.commands.registerCommand(COMMAND, async () => {
-        formatInSameHtmlPage();
+
+        formatHtml();
+        // formatInSameHtmlPage();
     }));
 }
 /*
