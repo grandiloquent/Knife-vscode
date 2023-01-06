@@ -9,7 +9,7 @@ module.exports = (context) => {
         const {text, range} = activeEditor.document.lineAt(activeEditor.selection.active.line);
         const strings = (await translate(text.trim())).map(x => x['trans']).join(' ');
         activeEditor.edit(editBuilder => {
-            editBuilder.replace(range, `${camel(strings)}`)
+            editBuilder.replace(range, `${strings}`)
         })
     }));
 }
