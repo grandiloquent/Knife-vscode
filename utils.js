@@ -353,12 +353,12 @@ async function formatWeChatEventHandler() {
     );
 }
 
-async function translate(text) {
+async function translate(text, to = 'en') {
     return JSON.parse(await fetchStringAsync({
         method: "GET",
         hostname: "kpkpkp.cn",
-        path: "/api/trans?to=en&q=" + encodeURIComponent(text),
-    }))['sentences'][0]['trans'];
+        path: `/api/trans?to=${to}&q=${encodeURIComponent(text)}`,
+    }))['sentences'];
 }
 
 function capitalize(text) {

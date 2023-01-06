@@ -9,7 +9,8 @@
   },
   "activationEvents": [
     "onCommand:knife.translateName",
-    "onCommand:knife.formatInlineStyle"
+    "onCommand:knife.formatInlineStyle",
+    "onCommand:knife.translateChinese"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -21,6 +22,10 @@
       {
         "command": "knife.formatInlineStyle",
         "title": "F4 格式化内联样式"
+      },
+      {
+        "command": "knife.translateChinese",
+        "title": "F5 翻译中文"
       }
     ],
     "menus": {
@@ -38,6 +43,11 @@
         },
         {
           "command": "knife.formatInlineStyle",
+          "when": "editorTextFocus",
+          "group": "uncommon"
+        },
+        {
+          "command": "knife.translateChinese",
           "when": "editorTextFocus",
           "group": "uncommon"
         }
