@@ -8,7 +8,8 @@
     "vscode": "^1.70.0"
   },
   "activationEvents": [
-    "onCommand:knife.translateName"
+    "onCommand:knife.translateName",
+    "onCommand:knife.formatInlineStyle"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -16,6 +17,10 @@
       {
         "command": "knife.translateName",
         "title": "F3 翻译变量名称"
+      },
+      {
+        "command": "knife.formatInlineStyle",
+        "title": "F4 格式化内联样式"
       }
     ],
     "menus": {
@@ -28,6 +33,11 @@
       "submenus": [
         {
           "command": "knife.translateName",
+          "when": "editorTextFocus",
+          "group": "uncommon"
+        },
+        {
+          "command": "knife.formatInlineStyle",
           "when": "editorTextFocus",
           "group": "uncommon"
         }
