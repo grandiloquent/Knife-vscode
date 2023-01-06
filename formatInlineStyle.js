@@ -20,19 +20,23 @@ function extractStyle() {
 }
 
 function formatInSameHtmlPage() {
-
+    const editor = vscode.window.activeTextEditor;
 
     let text = editor.document.getText();
     const obj = extractStyle();
     if (obj.name.startsWith(".")) {
         text = text.replace('</style>', `${obj.name}{
 ${obj.body}
-}`).replace(obj.match[0], `class="${obj.name.slice(1)}"`)
+}
+</style>
+`).replace(obj.match[0], `class="${obj.name.slice(1)}"`)
             .replaceAll(obj.match[2], `class="${obj.name.slice(1)}"`)
     } else {
         text = text.replace('</style>', `${obj.name}{
 ${obj.body}
-}`).replaceAll(obj.match[2], '')
+}
+</style>
+`).replaceAll(obj.match[2], '')
 
     }
     let invalidRange = new vscode.Range(0, 0, editor.document.lineCount, 0);
