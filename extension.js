@@ -4,6 +4,12 @@ function activate(context) {
     require('./translateName')(context);
     require('./formatInlineStyle')(context);
     require('./translateChinese')(context);
+    require('./beautify')(context);
+    require('./formatGoCode')(context);
+    require('./createFile')(context);
+    require('./createLit')(context);
+    require('./litHandler')(context);
+    require('./createGoHandler')(context);
 }
 
 function deactivate() {

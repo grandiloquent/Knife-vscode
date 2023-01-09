@@ -10,7 +10,13 @@
   "activationEvents": [
     "onCommand:knife.translateName",
     "onCommand:knife.formatInlineStyle",
-    "onCommand:knife.translateChinese"
+    "onCommand:knife.translateChinese",
+    "onCommand:knife.beautify",
+    "onCommand:knife.formatGoCode",
+    "onCommand:knife.createFile",
+    "onCommand:knife.createLit",
+    "onCommand:knife.litHandler",
+    "onCommand:knife.createGoHandler"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -26,6 +32,30 @@
       {
         "command": "knife.translateChinese",
         "title": "F5 翻译中文"
+      },
+      {
+        "command": "knife.beautify",
+        "title": "F6 格式化文档"
+      },
+      {
+        "command": "knife.formatGoCode",
+        "title": "formatGoCode"
+      },
+      {
+        "command": "knife.createFile",
+        "title": "Ctrl+N 创建文件"
+      },
+      {
+        "command": "knife.createLit",
+        "title": "Ctrl+L 创建 Lit 组件"
+      },
+      {
+        "command": "knife.litHandler",
+        "title": "Ctrl + 0 添加 Lit 参数"
+      },
+      {
+        "command": "knife.createGoHandler",
+        "title": "Alt + N 创建 Go Hanlder"
       }
     ],
     "menus": {
@@ -50,6 +80,36 @@
           "command": "knife.translateChinese",
           "when": "editorTextFocus",
           "group": "uncommon"
+        },
+        {
+          "command": "knife.beautify",
+          "when": "editorTextFocus",
+          "group": "uncommon"
+        },
+        {
+          "command": "knife.formatGoCode",
+          "when": "editorTextFocus",
+          "group": "uncommon"
+        },
+        {
+          "command": "knife.createFile",
+          "when": "editorTextFocus",
+          "group": "uncommon"
+        },
+        {
+          "command": "knife.createLit",
+          "when": "editorTextFocus",
+          "group": "uncommon"
+        },
+        {
+          "command": "knife.litHandler",
+          "when": "editorTextFocus",
+          "group": "uncommon"
+        },
+        {
+          "command": "knife.createGoHandler",
+          "when": "editorTextFocus",
+          "group": "uncommon"
         }
       ]
     },
@@ -63,5 +123,8 @@
   "scripts": {},
   "devDependencies": {
     "@types/vscode": "^1.70.0"
+  },
+  "dependencies": {
+    "js-beautify": "^1.14.7"
   }
 }

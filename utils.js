@@ -230,14 +230,14 @@ async function replaceSelection(action) {
     // }
     try {
         const value = await action(text);
-        editor.edit(
+        await editor.edit(
             edit => editor.selections.forEach(
                 selection => {
                     edit.replace(selection, value);
                 }
             )
         );
-        vscode.commands.executeCommand('editor.action.formatSelection');
+        //vscode.commands.executeCommand('editor.action.formatSelection');
     } catch (error) {
         console.log(error);
         vscode.window.showErrorMessage('Something went wrong! Try that the properties are in this format: "private String name;"');
@@ -407,5 +407,6 @@ module.exports = {
     translate,
     capitalize,
     getFileName, readText,
-    insertText
+    insertText,
+
 }
