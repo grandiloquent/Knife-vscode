@@ -6,7 +6,7 @@ const https = require('https');
 const vscode = require('vscode');
 
 function camel(string) {
-    string = string.replaceAll(/[ _-]([a-zA-Z])/g, m => m[1].toUpperCase());
+    string = string.replaceAll(/[ _\/-]([a-zA-Z])/g, m => m[1].toUpperCase());
     return string.slice(0, 1).toLowerCase() + string.slice(1);
 }
 

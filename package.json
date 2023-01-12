@@ -16,7 +16,8 @@
     "onCommand:knife.createFile",
     "onCommand:knife.createLit",
     "onCommand:knife.litHandler",
-    "onCommand:knife.createGoHandler"
+    "onCommand:knife.createGoHandler",
+    "onCommand:knife.quickInsert"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -56,6 +57,10 @@
       {
         "command": "knife.createGoHandler",
         "title": "Alt + N 创建 Go Hanlder"
+      },
+      {
+        "command": "knife.quickInsert",
+        "title": "Ctrl + Q 快速插入"
       }
     ],
     "menus": {
@@ -108,6 +113,11 @@
         },
         {
           "command": "knife.createGoHandler",
+          "when": "editorTextFocus",
+          "group": "uncommon"
+        },
+        {
+          "command": "knife.quickInsert",
           "when": "editorTextFocus",
           "group": "uncommon"
         }

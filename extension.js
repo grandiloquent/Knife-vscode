@@ -10,6 +10,7 @@ function activate(context) {
     require('./createLit')(context);
     require('./litHandler')(context);
     require('./createGoHandler')(context);
+    require('./quickInsert')(context);
 }
 
 function deactivate() {
