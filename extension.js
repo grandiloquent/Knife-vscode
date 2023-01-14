@@ -11,6 +11,7 @@ function activate(context) {
     require('./litHandler')(context);
     require('./createGoHandler')(context);
     require('./quickInsert')(context);
+    require('./formatStyle')(context);
 }
 
 function deactivate() {

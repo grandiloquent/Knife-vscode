@@ -17,7 +17,8 @@
     "onCommand:knife.createLit",
     "onCommand:knife.litHandler",
     "onCommand:knife.createGoHandler",
-    "onCommand:knife.quickInsert"
+    "onCommand:knife.quickInsert",
+    "onCommand:knife.formatStyle"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -61,6 +62,10 @@
       {
         "command": "knife.quickInsert",
         "title": "Ctrl + Q 快速插入"
+      },
+      {
+        "command": "knife.formatStyle",
+        "title": "F2 格式化样式"
       }
     ],
     "menus": {
@@ -118,6 +123,11 @@
         },
         {
           "command": "knife.quickInsert",
+          "when": "editorTextFocus",
+          "group": "uncommon"
+        },
+        {
+          "command": "knife.formatStyle",
           "when": "editorTextFocus",
           "group": "uncommon"
         }

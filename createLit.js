@@ -8,7 +8,9 @@ const COMMAND = 'knife.createLit';
 
 module.exports = (context) => {
     context.subscriptions.push(vscode.commands.registerCommand(COMMAND, async () => {
-        const dir = `C:\\Users\\Administrator\\WeChatProjects\\yg\\app\\components`;
+        // `C:\\Users\\Administrator\\WeChatProjects\\yg\\app\\components`;
+
+        const dir = `C:\\Users\\Administrator\\Desktop\\Resources\\SourceCode\\Video\\app\\src\\main\\jni\\static`;
         const strings = (await vscode.env.clipboard.readText()).trim();
         const fileName = path.join(dir, `custom-${strings}.js`);
         console.log(fileName)
@@ -42,9 +44,11 @@ this.data=[];
     customElements.define('custom-${strings}', Custom${name});
 /*
 <!--
-<script type=""module"" src=""../components/custom-${strings}.js""></script>
-<custom-{id} bind @submit=""""></custom-${strings}>
+<script type="module" src="../components/custom-${strings}.js"></script>
+<custom-${name} bind="custom${name}" @submit="" style="display:none;"></custom-${strings}>
                                          -->
+                                         custom${name}.removeAttribute('style');
+                                         custom${name}.setAttribute('style', 'display:none');
                                      */`);
 
     }));
