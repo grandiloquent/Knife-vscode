@@ -7,7 +7,7 @@ function activate(context) {
     require('./beautify')(context);
     require('./formatGoCode')(context);
     require('./createFile')(context);
-    require('./createLit')(context);
+    require('./createWebComponents')(context);
     require('./litHandler')(context);
     require('./createGoHandler')(context);
     require('./quickInsert')(context);
