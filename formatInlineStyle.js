@@ -47,6 +47,28 @@ ${obj.body}
     editor.edit(edit => edit.replace(validFullRange, text));
 }
 
+function formatSameHtmlPage() {
+    const editor = vscode.window.activeTextEditor;
+
+    let text = editor.document.getText();
+    const obj = extractStyle();
+    if (obj.name.startsWith(".")) {
+        text = text.replace('style.textContent = `', `style.textContent = \`${obj.name}{
+${obj.body}
+}
+`).replace(obj.match[0], `class="${obj.name.slice(1)}"`)
+            .replaceAll(obj.match[2], `class="${obj.name.slice(1)}"`)
+    } else {
+        text = text.replace('style.textContent = `', `style.textContent = \`${obj.name}{
+${obj.body}
+}
+`).replaceAll(obj.match[2], '')
+
+    }
+    let invalidRange = new vscode.Range(0, 0, editor.document.lineCount, 0);
+    let validFullRange = editor.document.validateRange(invalidRange);
+    editor.edit(edit => edit.replace(validFullRange, text));
+}
 function formatHtml() {
     const fileName = vscode.window.activeTextEditor.document.fileName;
     const dir = path.join(path.dirname(fileName), "css");
@@ -81,7 +103,7 @@ module.exports = (context) => {
     context.subscriptions.push(vscode.commands.registerCommand(COMMAND, async () => {
 
         //  formatHtml();
-       formatInSameHtmlPage();
+       formatSameHtmlPage();
     }));
 }
 /*
