@@ -80,8 +80,8 @@ function formatHtml() {
 module.exports = (context) => {
     context.subscriptions.push(vscode.commands.registerCommand(COMMAND, async () => {
 
-        formatHtml();
-        // formatInSameHtmlPage();
+        //  formatHtml();
+       formatInSameHtmlPage();
     }));
 }
 /*
