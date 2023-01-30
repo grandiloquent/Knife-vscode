@@ -14,7 +14,7 @@
     "onCommand:knife.beautify",
     "onCommand:knife.formatGoCode",
     "onCommand:knife.createFile",
-    "onCommand:knife.createLit",
+    "onCommand:knife.createWebComponents",
     "onCommand:knife.litHandler",
     "onCommand:knife.createGoHandler",
     "onCommand:knife.quickInsert",
@@ -48,8 +48,8 @@
         "title": "Ctrl+N 创建文件"
       },
       {
-        "command": "knife.createLit",
-        "title": "Ctrl+L 创建 Lit 组件"
+        "command": "knife.createWebComponents",
+        "title": "Ctrl+L 创建 Web 组件"
       },
       {
         "command": "knife.litHandler",
@@ -107,7 +107,7 @@
           "group": "uncommon"
         },
         {
-          "command": "knife.createLit",
+          "command": "knife.createWebComponents",
           "when": "editorTextFocus",
           "group": "uncommon"
         },
