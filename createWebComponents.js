@@ -27,9 +27,10 @@ module.exports = (context) => {
     });
     const style = document.createElement('style');
     style.textContent = \` \`;
-    this.shadowRoot.append(style, wrapper);
+    this.shadowRoot.appendChild(style);
   }
   navigate(e) {
+  // .addEventListener('click',this.navigate.bind(this))
     this.dispatchEvent(new CustomEvent('submit', {
       detail: e.currentTarget.dataset.href
     }));
